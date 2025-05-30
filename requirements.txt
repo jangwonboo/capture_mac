@@ -1,0 +1,8 @@
+pyautogui
+pillow
+psutil
+numpy
+requests
+python-dotenv
+filelock
+PyPDF2

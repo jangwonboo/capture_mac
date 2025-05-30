@@ -1,0 +1,6 @@
+# Capture & OCR Automation Toolkit
+
+## 개요 (Overview)
+...
+(위에서 안내한 README.md 내용 전체 붙여넣기)
+...
