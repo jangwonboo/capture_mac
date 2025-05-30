@@ -92,12 +92,12 @@ class WindowCapture:
             return
         content = windows_data[1:-1] if windows_data.startswith('{') and windows_data.endswith('}') else windows_data
         items = [i.strip().strip('"') for i in content.split(',') if i.strip()]
-        print("\nAvailable Windows:")
+        logger.info("\nAvailable Windows:")
         for i, item in enumerate(items, 1):
             parts = item.split('|')
             if len(parts) == 6:
                 proc_name, win_name, x, y, w, h = parts
-                print(f"{i:2d}. [{proc_name}] {win_name}  ({x},{y}) {w}x{h}")
+                logger.info(f"{i:2d}. [{proc_name}] {win_name}  ({x},{y}) {w}x{h}")
 
     @staticmethod
     def get_window_info(app_name=None, window_title=None):
@@ -194,7 +194,7 @@ class WindowCapture:
         if coords.size == 0:
             logger.warning("Non-white area not found. Saving original.")
             img.save(output_path)
-            print(f"[INFO] Final cropped image size: {img.size}")
+            logger.info(f"Final cropped image size: {img.size}")
             return True
         y0, x0 = coords.min(axis=0)
         y1, x1 = coords.max(axis=0) + 1
@@ -204,7 +204,7 @@ class WindowCapture:
         x0 = max(0, x0 + margin_left)
         x1 = max(x0, x1 - margin_right)
         cropped = img.crop((x0, y0, x1, y1))
-        print(f"[INFO] Final cropped image size (after margin): {cropped.size}")
+        logger.info(f"Final cropped image size (after margin): {cropped.size}")
         cropped.save(output_path)
         return True
 
